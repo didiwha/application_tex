@@ -1,0 +1,385 @@
+/***********************************************
+*************** CLASSES GENERALES **************
+***********************************************/
+body{
+	text-align: center;
+}
+.full{
+	width: 100%;
+	height: 100%;
+}
+.t-left{
+	text-align: left;
+}
+.t-right{
+	text-align: right;
+}
+/***********************************************
+************** MENU LAYOUT VIEWS ***************
+***********************************************/
+/************************/
+.nav-bar{
+    background: #131418;
+    height: 58px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 51;
+}
+#tex-logo {
+    display: inline-block;
+    float: left;
+    height: 58px;
+    position: relative;
+    z-index: 3;
+    margin: 0px;
+}
+#link-logo {
+    display: block;
+    padding: 0 27px;
+}
+#link-logo{
+    color: white;
+}
+h1 {
+    font-size: 34px;
+    line-height: 45px;
+}
+.nav-bar a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+/***********************/
+.bloc-menu {
+	height: 65px;
+	padding: 5px;
+	text-align: center;
+}
+.bloc-fonction img{
+	width: 35px;
+	height: 35px;
+	float: none;
+	margin: 0 auto;
+}
+.bloc-message-error, .bloc-message-info{
+	height: auto;
+}
+.content-message-error, .content-message-info{
+	height:auto;
+	font-weight: bold;
+	text-align:center;
+	padding:10px;
+	margin-top:5px;
+	margin-bottom:5px;
+	border-radius:3px
+}
+.content-message-error{
+	background-color: orange;
+	color: grey;
+}
+.content-message-info{
+	background: #E0EAF1;
+	color: orange;
+}
+/***********************************************
+********** ADMIN ONGLETS LAYOUT VIEWS **********
+***********************************************/
+.onglets-container{
+	margin-top: 5px;
+}
+.content-onglets{
+	height: 50px;
+	text-align: center;
+	padding-top: 5px;
+}
+.bt-onglets{
+	width: 15%;
+	min-width: 110px;
+}
+/***********************************************
+************* FOOTER LAYOUT VIEWS **************
+***********************************************/
+.footer-container{
+	width: 100%;
+	/*position: absolute;*/
+	margin-top: 20px;
+	bottom: 0px;
+}
+.footer-bloc{
+	background: orange;
+	height: 40px;
+	text-align: center;
+	color: white;
+}
+/***********************************************
+*************** ARRAY VIEWS ********************
+***********************************************/
+.button-container{
+	margin-top: 15px;
+}
+.table-container{
+	margin-top: 5px;
+}
+.table form{
+	display: inline;
+}
+.table th{
+	background-color: #8BA8AF;
+}
+/***********************************************
+********** NEW/UPDATE FORM VIEWS ***************
+***********************************************/
+form input{
+	text-align: right;
+} 
+.form-container{
+	margin-top: 5px;
+}
+.group-input{
+	float: left;
+	position: relative;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.input-group{
+	margin-bottom: 10px;
+	/*width: 300px;*/
+	width: 100%;
+}
+.input-group-addon{
+	width: 140px;
+	color: white;
+	background-color: #FDEABD;
+	font-weight: bold;
+}
+.form-container select,input{
+	text-align: right;
+}
+/*********************************
+/*** ERROR VALIDATION MESSAGE ***/
+/********************************/
+.form-error-validation-container{
+	margin-top: 5px;
+}
+.bloc-form-error-validation{
+	height: auto;
+	max-height: 90px;
+}
+.row-bloc-form-error{
+	display: inline-block;
+	width: 100%;
+	height: 100;
+	max-height: 90px;
+}
+.content-form-error-validation{
+	max-height: 90px;
+	overflow: auto;
+	padding:5px;
+	border-radius: 5px;
+	background: #E6E6E6;
+	color:red;
+	border-style: dashed;
+	border-color:red;
+	border-width: 1px;
+}
+.bouton-form{
+	width: 120px;
+}
+/**** NEW USER FORM // UPDATE USER FORM ****/
+.bloc-habilitations-fonctions, .bloc-habilitations-services{
+	border-style: dashed;
+	border-color: orange;
+	border-width: 1px;
+	margin-right: 2px;
+}
+.bloc-habilitations-scaners, .bloc-habilitations-etablissements{
+	overflow: hidden;
+	border-style: dashed;
+	border-color: orange;
+	border-width: 1px;
+	margin-left: 2px;
+}
+.bloc-titre{
+	height:30px;
+	padding:4px;
+	background:orange;
+	color:white;
+	font-weight: bold;
+}
+.bloc-content{
+	max-height: 200px;
+	overflow-y: scroll;
+}
+.bloc-input-fonction{
+	padding-right: 0px;
+}
+.bloc-permission-fonction{
+	padding-left: 0px;
+	text-align: left;
+}
+.bloc-input-scaner, .bloc-input-service, .bloc-input-etablissement{
+	width: 100%;
+	padding-right: 15px;
+}
+.radio-0{
+	background: #F5A9A9;
+}
+.radio-1{
+	background: #F7BE81;
+}
+.radio-2{
+	background: #A9D0F5;
+}
+.radio-3{
+	background: #BCF5A9;
+}
+/***********************************************
+************ FONCTIONS VIEWS *******************
+***********************************************/
+.container-first{
+	margin-top: 15px;
+}
+.bloc-entete{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.bloc-onglet{
+	background: #2FA9C7;
+	height: 45px;
+	padding: 5px;
+	padding-left: 0px;
+	border-radius: 10px 10px 0 0;
+}
+.bloc-entete-boutons{
+	height: 45px;
+	text-align: right;
+	padding: 0px 0px 2px 0px;
+}
+.bloc-entete-boutons button{
+	background-color: #F2F2F2;
+	border:none;
+}
+.bloc-entete-boutons .btn:hover{
+	background-color: #E6E6E6;
+}
+.bloc-entete-boutons button img{
+	width:35px;
+	height: 30px;
+}
+.content-onglet{
+	width: 100%;
+	height: 100%;
+	color: white;
+	font-weight: bold;
+	vertical-align: center;
+	padding: 5px;
+}
+.content-entete-1{
+	background: #2FA9C7;
+	height: 60px;
+	padding: 0px;
+}
+.bloc-image-entete-1{
+	background: #2FA9C7;
+	height: 100%;
+	padding-top: 10px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.bloc-entete-right{
+	background: #2FA9C7;
+	height: 100%;
+	border-radius: 0px 10px 0px 0px;
+	padding: 10px 0px 0px 0px;
+}
+.bloc-commentaire, .bloc-numero{
+	padding: 0px;
+	padding-top:10px
+}
+.bloc-commentaire input, .bloc-numero input{
+	height: 37px;
+}
+.bloc-boutons{
+	padding: 5px 0px 0px 10px;
+}
+.bloc-boutons input{
+	display: block;
+	width: 40px;
+	height: 22px;
+	padding: 0px;
+}
+.bloc-boutons input:first-child{
+	margin-bottom: 2px;
+}
+.content-rows-1{
+	height: auto;
+	max-height: 400px;
+	padding: 2px;
+	overflow: auto;
+	background-color: #2FA9C7;
+}
+.row-full{
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin:0px;
+}
+.row-scan-1{
+	height: 35px;
+	width: 100%;
+	padding: 5px;
+	font-size: 15px;
+	margin: 1px 0px 0px 0px;
+	border-radius: 3px;
+	background: #BFE4FF;
+}
+.row-scan-2{
+	height: 35px;
+	width: 100%;
+	padding: 5px;
+	font-size: 15px;
+	margin: 1px 0px 0px 0px;
+	border-radius: 3px;
+	background: #EDF7FF;
+}
+.row-scan-1 img, .row-scan-2 img{
+	margin-right: 10px;
+}
+.row-scan-1 .row-zone-2, .row-scan-1 .row-zone-3{
+	border-left:1px solid white;
+}
+.row-scan-2 .row-zone-2, .row-scan-2 .row-zone-3{
+	border-left:1px solid lightblue;
+}
+.row-scan-1 .row-zone-3{
+	border-right:1px solid white;
+}
+.row-scan-2 .row-zone-3{
+	border-right:1px solid lightblue;
+}
+.icone{
+	width: 25px;
+	height: 25px;
+	padding: 2px;
+}
+.icone-fonction{
+	width: 55px;
+	height: 45px;
+}
+.row-scan-1 form,.row-scan-2 form{
+	display: inline;
+}
+.row-no-answers-1{
+	width: 100%;
+	height: 55px;
+	margin: 0px;
+	color: grey;
+	font-size: 16px;
+	padding: 10px;
+	background: #EDF7FF;
+}
+.btn-1{
+	width: 60px;
+	height: 35px;
+	font-weight: bold;
+}

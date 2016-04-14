@@ -1,0 +1,198 @@
+html,body{
+	margin:0;
+	background-size: cover;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3cba3+25,e2964a+100 */
+	background: #f3cba3; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f3cba3 25%, #e2964a 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(25%,#f3cba3), color-stop(100%,#e2964a)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f3cba3 25%,#e2964a 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f3cba3 25%,#e2964a 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f3cba3 25%,#e2964a 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f3cba3 25%,#e2964a 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3cba3', endColorstr='#e2964a',GradientType=0 ); /* IE6-9 */
+}
+/*********************************
+*********** HEADER **************/
+/*********************************/
+.bloc-header{
+	height: 100px;
+	background-color: green;
+	padding:5px;
+}
+.content-header{
+	width:100%;
+	height:100%;
+	background-color: yellow;
+}
+.content-header h1{
+	margin-top:0px;
+	text-align:center;
+}
+/*********************************
+****** BLOC FORM CONNEXION *******/
+/*********************************/
+.bloc-connexion{
+	height:100px;
+	background-color:blue;
+	padding:5px;
+}
+.content-connexion{
+	width:100%;
+	height:100%;
+	background-color:yellow;
+}
+.content-connexion input{
+	text-align: center;
+}
+/*********************************
+********** BLOC TITRE ***********/
+/*********************************/
+.bloc-titre{
+	height:100px;
+	background-color:red;
+	padding:5px;
+}
+.content-titre{
+	width:100%;
+	height:100%;
+	background-color:pink;
+}
+.content-titre h1{
+	margin-top:0px;
+	text-align:center;
+}
+/*********************************
+******** BLOC LEFT FULL *********/
+/*********************************/
+.bloc-left{
+	height:600px;
+	background-color:white;
+	padding:5px;
+}
+.content-left{
+	width:100%;
+	height:100%;
+	background-color:red;
+}
+/*********************************
+********** BLOC LIENS ***********/
+/*********************************/
+.bloc-liens{
+	height:115px;
+	background-color:orange;
+	padding:5px;
+}
+.content-liens{
+	width:100%;
+	height:100%;
+	background-color:blue;
+}
+.content-liens h3{
+	margin-top:0px;
+	text-align:center;
+}
+/*********************************
+****** BLOC DOCUMENTS ***********/
+/*********************************/
+.bloc-documents{
+	height:130px;
+	background-color:orange;
+	padding:5px;
+	margin-top:5px;
+}
+.content-documents{
+	width:100%;
+	height:100%;
+	background-color:blue;
+}
+.content-documents h3{
+	margin-top:0px;
+	text-align:center;
+}
+/*********************************
+********* BLOC PUB TOP ***********/
+/*********************************/
+.bloc-publicite-top{
+	height: 140px;
+	background-color: yellow;
+	padding:5px;
+	margin-top:55px;
+}
+.content-publicite-top{
+	width:100%;
+	height:100%;
+	background-color:green;
+}
+.content-publicite-top h3{
+	margin-top:0px;
+}
+/*********************************
+****** BLOC PUB BOTTOM ***********/
+/*********************************/
+.bloc-publicite-bottom{
+	margin-top:5px;
+	height: 140px;
+	background-color: yellow;
+	padding:5px;
+}
+.content-publicite-bottom{
+	width:100%;
+	height:100%;
+	background-color:green;
+}
+.content-publicite-bottom h3{
+	margin-top:0px;
+}
+/*********************************
+****** BLOC EVENEMENTS **********/
+/*********************************/
+.bloc-evenements{
+	height:250px;
+	background-color:orange;
+	padding:5px;
+}
+.content-evenements{
+	height:100%;
+	background-color:grey;
+}
+.content-evenements h2{
+	margin-top:0px;
+}
+/*********************************
+******** BLOC BILLETS ***********/
+/*********************************/
+.bloc-billets{
+	height:250px;
+	background-color:yellow;
+	padding:5px
+}
+.content-billets{
+	height:100%;
+	background-color:blue;
+}
+.content-billets h2{
+	margin-top:0px;
+}
+/*********************************
+************ FOOTER *************/
+/*********************************/
+.bloc-footer{
+	height: 100px;
+	background-color: orange;
+	padding:5px;
+}
+.content-footer{
+	height: 100%;
+	background-color: green;
+}
+.content-footer h1{
+	margin-top:0px;
+	text-align:center;
+}
+/*********************************
+*********** SLIDER PRO ***********/
+/*********************************/
+.slider-pro{
+	margin-top:15px;
+}
+
