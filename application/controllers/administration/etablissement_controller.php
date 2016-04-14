@@ -6,7 +6,7 @@
 		//************************ FONCTIONS ************************
 		//***********************************************************
 		/**
-		 * index function
+		 * index function ----
 		 * - Récupère les données des etablissements
 		 * - Charge la vue tableau des etablissements [array_etablissements_view] avec les données associées
 		 */
