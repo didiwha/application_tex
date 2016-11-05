@@ -1,76 +1,69 @@
-<!--<nav class="nav-bar">
-	<h1 id="tex-logo">
-		<a id="link-logo" class="full" href="<?=base_url();?>index.php/main_controller/accueil">
-			<div class="full" style="padding-top: 7px">Tex</div>
-		</a>
-	</h1>
-</nav>-->
-<div class="container-fluid">
+<header class="bloc-menu">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 bloc-menu">
-			<div class="row">
-				<a href="<?=base_url();?>index.php/main_controller/accueil">
-					<div class="col-xs-12 col-md-1 col-md-offset-3 bloc-fonction">
-		                <div class="row">
-		                    <img src="<?=ressources_images_fonctions_route().'image_default_accueil.png';?>" title="Accueil"/>
-		                    <div class="row">
-		                        <div class="col-xs-12 col-md-12 date">Accueil</div>
-		                    </div>
-		                </div>
-		            </div>
-				</a>
-				<?php if(!empty(get_session_user_fonctions_array($this))):?>
-					<?php foreach (get_session_user_fonctions_array($this) as $fonction):?>
-							<a href="<?=base_url().'index.php/fonctions/'.$fonction->controller;?>">
-								<div class="col-xs-12 col-md-1 bloc-fonction">
-					                <div class="row">
-					                    <img src="<?=ressources_images_fonctions_route().$fonction->image;?>" title="<?=$fonction->libelle_short;?>"/>
-					                    <div class="row">
-					                        <div class="col-xs-12 col-md-12 img-title"><?=$fonction->libelle_short;?></div>
-					                    </div>
-					                </div>
-					            </div>
-				            </a>
-		            <?php endforeach;?>
-	        	<?php endif;?>
-	            <?php if(get_session_user_statut_id($this) == 1):?>
-		            <a href="<?=base_url();?>index.php/administration/user_controller">
-						<div class="col-xs-12 col-md-1 bloc-fonction">
+		<a href="<?=base_url();?>index.php/main_controller/accueil">
+			<div class="col-xs-12 col-md-1 col-sm-offset-3 col-sm-1 col-md-offset-3 bloc-fonction">
+                <div class="row">
+                    <img src="<?=ressources_images_fonctions_route().'image_default_accueil.png';?>" title="Accueil"/>
+                    <!--<div class="row">
+                        <div class="col-xs-12 col-md-12 date">Accueil</div>
+                    </div>-->
+                </div>
+            </div>
+		</a>
+		<?php if(!empty(get_session_user_fonctions_array($this))):?>
+			<?php foreach (get_session_user_fonctions_array($this) as $fonction):?>
+					<a href="<?=base_url().'index.php/fonctions/'.$fonction->controller;?>">
+						<div class="col-xs-12 col-sm-1 col-md-1 bloc-fonction">
 			                <div class="row">
-			                    <img src="<?=ressources_images_fonctions_route().'image_default_parameter.png';?>" title="Parametres"/>
-			                    <div class="row">
-			                        <div class="col-xs-12 col-md-12">Parametres</div>
-			                    </div>
+			                    <img src="<?=ressources_images_fonctions_route().$fonction->image;?>" title="<?=$fonction->libelle_short;?>"/>
+			                    <!--<div class="row">
+			                        <div class="col-xs-12 col-md-12 img-title"><?=$fonction->libelle_short;?></div>
+			                    </div>-->
 			                </div>
 			            </div>
-					</a>
-				<?php endif;?>
-				<a href="<?=base_url();?>index.php/main_controller/accueil">
-					<div class="col-xs-12 col-md-1 bloc-fonction">
-		                <div class="row">
-		                    <img src="<?=ressources_images_fonctions_route().'image_default_compte.png';?>" title="Mon Compte"/>
-		                    <div class="row">
-		                        <div class="col-xs-12 col-md-12">Mon Compte</div>
-		                    </div>
-		                </div>
-		            </div>
-				</a>
-				<a href="<?=base_url();?>index.php/main_controller/deconnexion">
-					<div class="col-xs-12 col-md-1 bloc-fonction">
-		                <div class="row">
-		                    <img src="<?=ressources_images_fonctions_route().'image_default_disconnect.png';?>" title="Deconnexion"/>
-		                    <div class="row">
-		                        <div class="col-xs-12 col-md-12">Deconnexion</div>
-		                    </div>
-		                </div>
-		            </div>
-				</a>
+		            </a>
+            <?php endforeach;?>
+    	<?php endif;?>
+        <?php if(get_session_user_statut_id($this) == 1):?>
+            <a href="<?=base_url();?>index.php/administration/user_controller">
+				<div class="col-xs-12 col-sm-1 col-md-1 bloc-fonction">
+	                <div class="row">
+	                    <img src="<?=ressources_images_fonctions_route().'image_default_parameter.png';?>" title="Parametres"/>
+	                    <!--<div class="row">
+	                        <div class="col-xs-12 col-md-12">Parametres</div>
+	                    </div>-->
+	                </div>
+	            </div>
+			</a>
+		<?php endif;?>
+		<a href="<?=base_url();?>index.php/main_controller/accueil">
+			<div class="col-xs-12 col-sm-1 col-md-1 bloc-fonction">
+                <div class="row">
+                    <img src="<?=ressources_images_fonctions_route().'image_default_compte.png';?>" title="Mon Compte"/>
+                    <!--<div class="row">
+                        <div class="col-xs-12 col-md-12">Mon Compte</div>
+                    </div>-->
+                </div>
             </div>
-		</div>
-	</div>
-</div>
+		</a>
+		<a href="<?=base_url();?>index.php/main_controller/deconnexion">
+			<div class="col-xs-12 col-sm-1 col-md-1 bloc-fonction">
+                <div class="row">
+                    <img src="<?=ressources_images_fonctions_route().'image_default_disconnect.png';?>" title="Deconnexion"/>
+                    <!--<div class="row">
+                        <div class="col-xs-12 col-md-12">Deconnexion</div>
+                    </div>-->
+                </div>
+            </div>
+		</a>
+    </div>
+</header>
+<div class="site-container">
+<!-- ****************************************************************** -->
+<!-- *********************** AFFICHAGE FLASHDATA ********************** -->
+<!-- ****************************************************************** -->
 <?php if ($this->session->flashdata('error') !== null):?>
-        <div class="container-fluid message-error-container">
+        <div class="container-fluid">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1 bloc-message-error">
 					<div class="row">

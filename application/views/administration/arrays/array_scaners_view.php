@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-5">
             <a href="scaner_controller/insert_entry">
-                <button type="button" class="btn btn-success">Nouveau</button>
+                <button type="button" class="btn btn-success bouton-form">Nouveau</button>
             </a>  
         </div>
     </div>

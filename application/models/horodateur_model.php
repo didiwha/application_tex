@@ -41,7 +41,7 @@ class Horodateur_model extends CI_Model {
                         GROUP BY A.`numero`
                         ORDER BY A.`date` DESC
                         LIMIT 20";*/
-            $requete = "SELECT A.`id`, A.`numero`, A.`date`, A.`commentaire`, 
+            $requete = "SELECT A.`id`, A.`numero`, A.`date`, A.`commentaire`, A.`scaner_id`,
                         group_concat(`commentaire`) AS 'commentaires', B.`image` 
                         FROM $this->table_horodateur A 
                         LEFT JOIN $this->table_scaner B on A.`scaner_id` = B.`id` 
@@ -74,7 +74,7 @@ class Horodateur_model extends CI_Model {
                         'date' => Date("Y-m-d H:i:s"),
                         'commentaire' => $this->input->post('commentaire'),
                         'scaner_id' => $this->input->post('scaner_id'),
-                        'horodatage_type_id' => $this->input->post('horodatage_type_id')
+                        'prelevement_type_id' => $this->input->post('horodatage_type_id')
                     );
 
         if($this->db->insert($this->table_horodateur, $data)){

@@ -14,5 +14,6 @@
 	**************************************************************/
 	function encode_password($password){
 		$options = array('cost' => 5);
-		return password_hash($password, PASSWORD_BCRYPT, $options);
+		$options = array();
+		return password_hash($password, PASSWORD_BCRYPT);
 	}

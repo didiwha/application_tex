@@ -11,9 +11,10 @@
 		 */
 		public function index(){
 			//** CHARGEMENT DES VUES **
-            view_home_loader($this, "template/home_view", null);
+            //view_home_loader($this, "template/portail_view", null);
+            view_portail_loader($this, "template/portail_view", null);
 			//** PROFILING **
-			$this->output->enable_profiler(TRUE);
+			//$this->output->enable_profiler(TRUE);
 		}
 		/**
 		 * accueil function
@@ -22,7 +23,7 @@
 		public function accueil(){
 			getSession($this);
 			//** CHARGEMENT DES VUES **
-            view_loader($this, "template/accueil_view", null);
+            view_loader($this, "template/", "accueil_view", null);
 		}
 		/**
 		 * connexion function
@@ -36,7 +37,7 @@
 		public function connexion(){
 			//*** LOADING MODELS ***
 			models_loader($this, array("User_model", "Habilitations_model"));
-			if ($this->User_model->verification_identifiant()){
+			if ($this->User_model->verification_identifiant() !== FALSE){
 				//************************************
 				//** VERIFICATION VALIDITE PASSWORD **
 				//************************************
@@ -47,7 +48,7 @@
 				$data['user'] = $this->User_model->verification_identifiant();
 				$data['default_scaner'] = $this->User_model->get_default_scaner($data["user"][0]->id);
 				$data['droits_fonctions'] = $this->Habilitations_model->get_hab_fonctions_by_user($data["user"][0]->id);
-				$data['droits_scaners'] = $this->Habilitations_model->get_hab_scaners_by_user($data["user"][0]->id);
+				$data['droits_scaners'] = $this->Habilitations_model->get_hab_scaners_by_user_full($data["user"][0]->id);
 				$data['droits_services'] = $this->Habilitations_model->get_hab_services_by_user($data["user"][0]->id);
 				$data['droits_etablissements'] = $this->Habilitations_model->get_hab_etablissements_by_user($data["user"][0]->id);
 				//**************************************
@@ -78,7 +79,7 @@
                 //*************************
 				//** CHARGEMENT DES VUES **
 				//*************************
-                view_loader($this, "template/accueil_view", null);
+                view_loader($this, "template/", "accueil_view", null);
 			}else{
 				$this->session->set_flashdata('error', 'Erreur d\'identifiant et/ou de mot de passe');
                 redirect('main_controller', 'refresh');

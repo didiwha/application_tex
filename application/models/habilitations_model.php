@@ -136,6 +136,33 @@ class Habilitations_model extends CI_Model {
         return $resultat;
     }
     /**
+     * get_hab_scaners_by_user_full function
+     * - Retourne les scaners auxquels
+     * - le user est habilité
+     * - avec les dependances de services et etablissements
+     * 
+     * @param : $id_user
+     * @return : row OR Exception
+     */
+    public function get_hab_scaners_by_user_full($id_user){
+        try{
+            $requete = "SELECT A.`scaner_id`, A.`permission`, B.`libelle`, B.`image`, 
+                        C.libelle_short as 'service_short', D.libelle_short as 'etablissement_short'
+                        FROM $this->table_scaner_hab A
+                        LEFT JOIN $this->table_scaner B ON A.`scaner_id` = B.`id`
+                        LEFT JOIN $this->table_service C ON B.`service_id` = C.`id`
+                        LEFT JOIN $this->table_etablissement D ON C.`etablissement_id` = D.`id`
+                        WHERE A.`user_id` = '$id_user'";
+            $res = $this->db->query($requete);
+            $row = $res->result();
+            $resultat = $row;
+
+        }catch (PDOException $e){
+            die("Erreur : ".$e->getMessage());
+        }
+        return $resultat;
+    }
+    /**
      * get_scaners_and_hab_by_user function
      * - Retourne les scaners de la base et
      * - les habilitations scaners du user

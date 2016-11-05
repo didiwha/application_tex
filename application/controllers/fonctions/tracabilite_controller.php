@@ -44,6 +44,6 @@
 			$data['scans'] = $this->Horodateur_model->get_scans_by_scaner($scaner_id);
 			//** TEST SUIVI NUMERO **
 			$data['suiviNumero'] = $this->Horodateur_model->get_suivi_by_numero(98989898);
-			view_loader($this, "template/fonctions/tracabilite_view", $data);
+			view_loader($this, "template/fonctions/", "tracabilite_view", $data);
 		}
 	}

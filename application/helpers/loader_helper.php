@@ -1,6 +1,27 @@
 <?php
 	//*************************************************************
 	/************** models_loader Function ************************
+	** - Charge les fichiers associés de la vue dans un tableau
+	** - Chaque fichier: Un Type déclaré dans le footer et un Path
+	* @param: $view
+	**************************************************************/
+	function javascript_files_loader($view){
+		$files = array();
+		$array = array();
+		switch ($view) {
+			case 'horodateur_view':
+				$files = array(
+								array('php', assets_files_fonctions_views_path() . 'fonctions_horodateur_view.php')
+							  );
+				break;
+			default:
+				break;
+		}
+		$array['files'] = $files;
+		return $array;
+	}
+	//*************************************************************
+	/************** models_loader Function ************************
 	** - Charge les models passé en parametres dans un tableau 
 	** - de strings
 	* @param: $controller
@@ -38,17 +59,30 @@
 		$controller->load->view('layouts/footer_layout');		
 	}
 	//*************************************************************
-	/******************* view_loader Function *********************
-	** - Charge une vue avec header, menu et footer 
+	/***************** view_home_loader Function ******************
+	** - Charge une vue avec header_home et footer 
 	* @param: $controller
 	* @param: $view
 	* @param: $data
 	**************************************************************/
-	function view_loader($controller, $view, $data){
+	function view_portail_loader($controller, $view, $data){
+		$controller->load->view("layouts/header_layout");
+		$controller->load->view($view, $data);
+		$controller->load->view('layouts/footer_layout');		
+	}
+	//*************************************************************
+	/******************* view_loader Function *********************
+	** - Charge une vue avec header, menu, footer et fichiers js
+	* @param: $controller
+	* @param: $path
+	* @param: $view
+	* @param: $data
+	**************************************************************/
+	function view_loader($controller, $path, $view, $data){
 		$controller->load->view("layouts/header_layout");
 		$controller->load->view("layouts/menu_layout");
-		$controller->load->view($view, $data);
-		$controller->load->view("layouts/footer_layout");
+		$controller->load->view($path . $view, $data);
+		$controller->load->view("layouts/footer_layout", javascript_files_loader($view));
 	}
 	//*************************************************************
 	/********* get_config_uploading_image_scaner Function *********

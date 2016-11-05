@@ -44,7 +44,7 @@
 			}
 			//** TEST SUIVI NUMERO **
 			$data['suiviNumero'] = $this->Horodateur_model->get_suivi_by_numero(98989898);
-			view_loader($this, "template/fonctions/horodateur_view", $data);
+			view_loader($this, "template/fonctions/", "horodateur_view", $data);
 		}
 		/**
 		 * insert_entry function
@@ -62,7 +62,7 @@
 			load_form_insert_scan_rules($this);
 			if ($this->form_validation->run() == FALSE){
 				//** Redirection vers le formulaire
-                view_loader($this, "template/fonctions/horodateur_view", $data);
+                view_loader($this, "template/fonctions/", "horodateur_view", $data);
             }else{
                 //** Appel Méthode d'Insertion **
 				if($this->Horodateur_model->insert_scan()){

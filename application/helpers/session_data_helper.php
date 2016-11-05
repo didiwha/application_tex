@@ -196,7 +196,7 @@
 	}
 	//*************************************************************
 	/** get_session_horodateur_filter_horodatage_type Function ****
-	*- Retourne le filtre scaner libellé de la fonction tracabilité
+	*- Retourne le filtre horodatage type de la fonction horodateur
 	**************************************************************/
 	function get_session_horodateur_filter_horodatage_type($controller){
 		return $controller->session->userdata[get_horodateur_filters_array_var_libelle()][get_horodateur_filter_horodatage_type_var_libelle()];

@@ -12,6 +12,10 @@
 	function ressources_images_fonctions_path(){
 		return FCPATH."ressources/images/fonctions/";
 	}
+	//**** ASSETS ****
+	function assets_files_fonctions_views_path(){
+		return APPPATH . "../assets/files_fonctions/views/";
+	} 
 	/* -------------------------------------
 	* ---------- ROUTE FONCTIONS -----------
 	* ------------------------------------*/
@@ -66,6 +70,9 @@
 	function assets_modules_route(){
 		return assets_route().'modules/';
 	}
+	function assets_sass_route(){
+		return assets_route().'sass/';
+	}
 	//**** RESSOURCES ****
 	function ressources_images_route(){
 		return ressources_route().'images/';
@@ -104,6 +111,10 @@
 	/********************
 	**** THIRD STEP *****
 	********************/
+	//**** JAVASCRIPT FILES/VIEW ***
+	function assets_javascript_views_route(){
+		return assets_javascript_route().'views/';
+	}
 	//**** SLIDER PRO ***
 	function assets_modules_slider_route(){
 		return assets_modules_route().'sliderPro/';

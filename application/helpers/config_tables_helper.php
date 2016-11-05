@@ -14,7 +14,7 @@
 	//************************ USER_TABLE ***********************
 	//-----------------------------------------------------------
 	function get_user_table(){
-		return "adm_user";
+		return "adm_ent_user";
 	}
 	function create_table_user(){
 		$requete = "CREATE TABLE `".get_user_table()."` (
@@ -45,7 +45,7 @@
 	//********************** SCANER_TABLE ***********************
 	//-----------------------------------------------------------
 	function get_scaner_table(){
-		return "adm_scaner";
+		return "adm_ent_scaner";
 	}
 	function create_scaner_table(){
 		$requete = "CREATE TABLE `".get_scaner_table()."` (
@@ -61,7 +61,7 @@
 	//********************* SERVICE_TABLE ***********************
 	//-----------------------------------------------------------
 	function get_service_table(){
-		return "adm_service";
+		return "adm_ent_service";
 	}
 	function create_service_table(){
 		$requete = "CREATE TABLE `".get_service_table()."` (
@@ -80,7 +80,7 @@
 	//******************** ETABLISSEMENT_TABLE ******************
 	//-----------------------------------------------------------
 	function get_etablissement_table(){
-		return "adm_etablissement";
+		return "adm_ent_etablissement";
 	}
 	function create_etablissement_table(){
 		$requete = "CREATE TABLE `".get_etablissement_table()."` (
@@ -104,7 +104,7 @@
 	//******************* FONCTION_TABLE ************************
 	//-----------------------------------------------------------
 	function get_fonction_table(){
-		return "adm_fonction";
+		return "adm_ent_fonction";
 	}
 	function create_fonction_table(){
 		$requete = "CREATE TABLE `".get_fonction_table()."` (
@@ -194,6 +194,25 @@
 					  `commentaire` varchar(50) NOT NULL,
 					  `scaner_id` int(11) NOT NULL,
 					  `horodatage_type_id` int(1) NOT NULL
+					) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+		return $requete;
+	}
+	//-----------------------------------------------------------
+	//************* HORODATEUR_COMMENTAIRE_TABLE ****************
+	//-----------------------------------------------------------
+	function get_horodateur_commentaire_table(){
+		return "fnct_horodateur_commentaire";
+	}
+	function create_horodateur_commentaire_table(){
+		$requete = "CREATE TABLE `".get_horodateur_commentaire_table()."` (
+					  `com_id` int(11) NOT NULL,
+					  `com_numero_demande` varchar(10) NOT NULL,
+					  `com_id_scaner` varchar(3) NOT NULL,
+					  `com_coursier` varchar(50) DEFAULT NULL,
+					  `com_secretaire` varchar(50) DEFAULT NULL,
+					  `com_temperature` varchar(50) DEFAULT NULL,
+					  `com_examens` varchar(100) DEFAULT NULL,
+					  `com_commentaire` varchar(100) DEFAULT NULL
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 		return $requete;
 	}
