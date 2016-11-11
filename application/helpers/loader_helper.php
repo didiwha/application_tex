@@ -5,13 +5,23 @@
 	** - Chaque fichier: Un Type déclaré dans le footer et un Path
 	* @param: $view
 	**************************************************************/
-	function javascript_files_loader($view){
+	function associated_files_loader($view){
 		$files = array();
 		$array = array();
 		switch ($view) {
+			case 'portail_view':
+				$files = array(
+								array('js', assets_javascript_bcrypt_path() . 'bcrypt.js')
+							  );
+				break;
 			case 'horodateur_view':
 				$files = array(
 								array('php', assets_files_fonctions_views_path() . 'fonctions_horodateur_view.php')
+							  );
+				break;
+			case 'tracabilite_view':
+				$files = array(
+								array('php', assets_files_fonctions_views_path() . 'fonctions_tracabilite_view.php')
 							  );
 				break;
 			default:
@@ -47,32 +57,21 @@
 		$controller->load->view("layouts/footer_layout");
 	}
 	//*************************************************************
-	/***************** view_home_loader Function ******************
-	** - Charge une vue avec header_home et footer 
+	/************** view_portail_loader Function ******************
+	** - Charge une vue avec header et footer et fichiers associés
 	* @param: $controller
 	* @param: $view
 	* @param: $data
 	**************************************************************/
-	function view_home_loader($controller, $view, $data){
-		$controller->load->view("layouts/header_home_layout");
-		$controller->load->view($view, $data);
-		$controller->load->view('layouts/footer_layout');		
-	}
-	//*************************************************************
-	/***************** view_home_loader Function ******************
-	** - Charge une vue avec header_home et footer 
-	* @param: $controller
-	* @param: $view
-	* @param: $data
-	**************************************************************/
-	function view_portail_loader($controller, $view, $data){
+	function view_portail_loader($controller, $path, $view, $data){
 		$controller->load->view("layouts/header_layout");
-		$controller->load->view($view, $data);
-		$controller->load->view('layouts/footer_layout');		
+		$controller->load->view("layouts/flashdata_layout");
+		$controller->load->view($path . $view, $data);
+		$controller->load->view('layouts/footer_layout', associated_files_loader($view));		
 	}
 	//*************************************************************
 	/******************* view_loader Function *********************
-	** - Charge une vue avec header, menu, footer et fichiers js
+	** - Charge une vue avec header, menu, footer et fichiers associés
 	* @param: $controller
 	* @param: $path
 	* @param: $view
@@ -82,7 +81,7 @@
 		$controller->load->view("layouts/header_layout");
 		$controller->load->view("layouts/menu_layout");
 		$controller->load->view($path . $view, $data);
-		$controller->load->view("layouts/footer_layout", javascript_files_loader($view));
+		$controller->load->view("layouts/footer_layout", associated_files_loader($view));
 	}
 	//*************************************************************
 	/********* get_config_uploading_image_scaner Function *********

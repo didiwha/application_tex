@@ -807,7 +807,7 @@ form input{
 		background: $menu-bg;
 		border-radius: 6px;
 
-		animation: shimmy 2s;
+		animation: shimmy 1s;
 
 		@keyframes shimmy {
 			0% {
@@ -864,6 +864,190 @@ form input{
 				}
 			}
 		}		
+	}
+}
+
+/***********************************************
+************** VIEW TRACABILITE ****************
+***********************************************/
+.tracabilite-container{
+	$bloc-width:960px;
+	$onglet-height:55px;
+	$entete-height:85px;
+	$progress-bg:#E4E0E0;
+
+	.onglet-container{
+		height: $onglet-height;
+		width: $bloc-width;
+		margin: 0 auto;
+
+		.onglet-entete{
+			height: $onglet-height;
+			width: ($bloc-width/4);
+			background: darken($menu-bg, 5);
+			color:#FFF;
+			font-weight: bold;
+			padding: 20px;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+		}
+	}
+
+	.entete-container{
+		$progress-bg:#96cef6;
+
+		height: $entete-height;
+		width: $bloc-width;
+		margin: 0 auto;
+		background: darken($menu-bg, 5);
+		border-top-right-radius: 10px;
+
+		.progress-container{
+			$progress-cont-pad:3px;
+			$progress-height: ($entete-height/4)-($progress-cont-pad*2);
+
+			float: left;
+			height: $entete-height;
+			width: ($bloc-width/4);
+
+			.bar-container{
+				height: ($entete-height/4)-1;
+
+				.header-result{
+					font-size: 13px;
+					font-weight: bold;
+					color: #FFF;
+				}
+
+				.result-container{
+					float:left;
+					display: inline-block;
+					width: ($bloc-width/4)*0.15;
+					padding: 3px;
+					color: #FFF;
+					font-size: 13px;
+				}
+
+				.progress-bar-container{
+					float: left;
+					display: inline-block;
+					height: 100%;
+					width: ($bloc-width/4)*0.85;
+					padding: $progress-cont-pad;
+					border-radius: 2px;
+					color: #FFF;
+
+					.progress{
+						height: $progress-height;
+						position: relative;
+						line-height: $progress-height;
+
+						.progress-bar{
+							width: 50%;
+							background: $progress-bg;
+
+							span{
+								position:absolute;
+								display:block;								
+								height: $progress-height;
+								width:100%;
+								line-height: $progress-height;
+								color:grey;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.lists-container{
+			float: left;
+			height: $entete-height;
+			width: ($bloc-width/4);
+
+			.list-container{
+				height: ($entete-height/2);
+				padding: 4px;
+
+				select{
+					width:95%;
+					margin:0 auto;
+				}
+			}
+		}
+
+		.dates-container{
+			float: left;
+			height: $entete-height;
+			width: ($bloc-width/4);
+
+			.date-container{
+				height: ($entete-height/2);
+				padding: ($entete-height/2)*0.15;
+
+				input[type="text"]{
+					height: ($entete-height/2)*0.7;
+					width:75%;
+					margin:0 auto;
+					text-align: center;
+				}
+			}
+		}
+
+		.nc-compteur-container{
+			float: left;
+			height: $entete-height;
+			width: ($bloc-width/8);
+
+			.result-container{
+				height: ($entete-height*(1.5/5));
+				padding-top: 5px;
+				color: #FFF;
+			}
+			.img-compteur-container{
+				height: ($entete-height*(2/5));
+
+				img{
+					height: ($entete-height*(2/5));
+					width: ($entete-height*(2/5));
+				}
+			}
+			.content-container{
+				height: ($entete-height*(1.5/5));
+				font-size: 15px;
+				font-weight: bold;
+				padding:4px;
+				color: #FFF;
+				
+				input{
+					margin:0;
+				}
+			}
+		}
+
+		.validation-container{
+			float: left;
+			height: $entete-height;
+			width: ($bloc-width/8);
+			padding-top: (($entete-height)-35)/2;
+
+			button{
+				height: 35px;
+				width: 65px;
+				margin:0 auto;
+				border:1px solid darken($progress-bg, 10);
+				border-radius: 5px;
+				color: #FFF;
+				background: darken($progress-bg, 5);
+				font-size: 18px;
+				font-weight: bold;
+				text-transform: uppercase;
+
+				&:hover{
+					border:1px solid #FFF;
+				}
+			}
+		}
 	}
 }
 

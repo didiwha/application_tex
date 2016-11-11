@@ -115,7 +115,6 @@
 	//***************************************************************
 	//*** BOOTBOX Modification du Scaner par défaut de la session ***
 	//***************************************************************
-	//$("#bt-change-scaner").click(function() {
 	$("button[bt-change-scaner]").click(function() {
 		bootbox.dialog({
                 title: "Modification du Scaner par défaut",

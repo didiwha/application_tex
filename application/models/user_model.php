@@ -157,17 +157,19 @@ class User_model extends CI_Model {
 	 */
 	public function verification_identifiant(){
 		try{
-			/*$query = $this->db->get_where($this->table_user, 
+			$query = $this->db->get_where($this->table_user, 
 											array('poste' => $this->input->post('identifiant')),
-										    array('password' => encode_password($this->input->post('password'))));*/
-			$query = "SELECT * FROM $this->table_user A
+										    array('password' => encode_password($this->input->post('password'))));
+			/*$query = "SELECT * FROM $this->table_user A
 					  WHERE A.`poste` = '".$this->input->post('identifiant')."'
-					  AND A.`password` = '".encode_password($this->input->post('password'))."'";
+					  AND A.`password` = '".encode_password($this->input->post('password'))."'";*/
+		    /*$query = "SELECT * FROM $this->table_user A
+					  WHERE A.`poste` = '".$this->input->post('identifiant')."'";
 		    $res = $this->db->query($query);
-            $resultat = $res->num_rows();
+            $resultat = $res->num_rows();*/
 
 			//die(var_dump($query));
-	    	//$resultat = $query->num_rows();	    	
+	    	$resultat = $query->num_rows();	    	
 	    	if($resultat !== 0){
 	    		return $query->result();
 	    	}else{

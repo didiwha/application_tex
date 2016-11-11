@@ -1,0 +1,9 @@
+//****************************************
+//*************** TODO *******************
+//****************************************
+
+- ** helpers/security_application_helper
+Gestion encryption bcrypt
+
+-** view/template/fonctions/tracabilite_view
+Gestion de la recherche

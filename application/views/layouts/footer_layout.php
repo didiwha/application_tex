@@ -8,13 +8,14 @@
 		<!-- ****** CHARGEMENT FICHIER ASSOCIES A LA VUE ***** -->
 		<!-- ************************************************* -->
 		<?php if(isset($files)):?>
+			<?php //var_dump($files);?>
 			<?php foreach ($files as $key => $file):?>
 				<?php switch ($file[0]) {
 					case 'php':
 						require($file[1]);
 						break;
 					case 'js':
-						'<script type="text/javascript" src="<?=$file[1]?>"></script>';
+						echo '<script type="text/javascript" src="'.$file[1].'"></script>';
 						break;
 					default:
 						break;

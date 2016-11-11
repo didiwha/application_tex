@@ -10,6 +10,9 @@
 	function get_logged_in_var_libelle(){
 		return 'logged_in';
 	}
+	function get_user_id_var_libelle(){
+		return 'user_id';
+	}
 	function get_poste_var_libelle(){
 		return 'poste';
 	}
@@ -83,6 +86,13 @@
 	**************************************************************/
 	function get_session_logged_in($controller){
 		return $controller->session->userdata(get_logged_in_var_libelle());
+	}
+	//*************************************************************
+	/************* get_session_user_id Function *******************
+	** - Retourne la valeur de l'id user de la session courante
+	**************************************************************/
+	function get_session_user_id($controller){
+		return $controller->session->userdata(get_user_id_var_libelle());
 	}
 	//*************************************************************
 	/*********** get_session_user_poste Function ******************

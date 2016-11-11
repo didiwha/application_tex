@@ -15,7 +15,10 @@
 	//**** ASSETS ****
 	function assets_files_fonctions_views_path(){
 		return APPPATH . "../assets/files_fonctions/views/";
-	} 
+	}
+	function assets_javascript_bcrypt_path(){
+		return APPPATH . "../assets/javascript/bCrypt/";
+	}
 	/* -------------------------------------
 	* ---------- ROUTE FONCTIONS -----------
 	* ------------------------------------*/
@@ -111,9 +114,9 @@
 	/********************
 	**** THIRD STEP *****
 	********************/
-	//**** JAVASCRIPT FILES/VIEW ***
-	function assets_javascript_views_route(){
-		return assets_javascript_route().'views/';
+	//**** JAVASCRIPT BCRYPT ***
+	function assets_javascript_bcrypt_route(){
+		return assets_javascript_route().'bCrypt/';
 	}
 	//**** SLIDER PRO ***
 	function assets_modules_slider_route(){

@@ -11,10 +11,9 @@
 		 */
 		public function index(){
 			//** CHARGEMENT DES VUES **
-            //view_home_loader($this, "template/portail_view", null);
-            view_portail_loader($this, "template/portail_view", null);
+            view_portail_loader($this, "template/", "portail_view", null);
 			//** PROFILING **
-			//$this->output->enable_profiler(TRUE);
+			$this->output->enable_profiler(TRUE);
 		}
 		/**
 		 * accueil function
@@ -54,6 +53,7 @@
 				//**************************************
 				//** AJOUT D'INFORMATION A LA SESSION **
 				//**************************************
+				update_session_userdata($this, get_user_id_var_libelle(), $data["user"][0]->id);
 				update_session_userdata($this, get_poste_var_libelle(), $data["user"][0]->poste);
 				update_session_userdata($this, get_statut_id_var_libelle(), $data["user"][0]->statut_id);
 				update_session_userdata($this, get_default_scaner_var_libelle(), $data["default_scaner"]);
