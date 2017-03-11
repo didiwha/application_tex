@@ -7,3 +7,4 @@ Gestion encryption bcrypt
 
 -** view/template/fonctions/tracabilite_view
 Gestion de la recherche
+Ajouter les dates de debut et fin

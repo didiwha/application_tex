@@ -29,6 +29,11 @@ class Habilitations_model extends CI_Model {
 	//*****************************
 	//******** MÉTHODES ***********
 	//*****************************
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------- FONCTIONS ---------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
 	/**
 	 * get_hab_fonctions_by_user function
 	 * - Retourne les fonctions auxquelles
@@ -112,6 +117,11 @@ class Habilitations_model extends CI_Model {
             return FALSE;
         }
     }
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------- SCANERS --------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
     /**
      * get_hab_scaners_by_user function
      * - Retourne les scaners auxquels
@@ -125,6 +135,32 @@ class Habilitations_model extends CI_Model {
             $requete = "SELECT A.`scaner_id`, A.`permission`, B.`libelle`, B.`image`
                         FROM $this->table_scaner_hab A
                         LEFT JOIN $this->table_scaner B ON A.`scaner_id` = B.`id`
+                        WHERE A.`user_id` = '$id_user'";
+            $res = $this->db->query($requete);
+            $row = $res->result();
+            $resultat = $row;
+
+        }catch (PDOException $e){
+            die("Erreur : ".$e->getMessage());
+        }
+        return $resultat;
+    }
+    /**
+     * get_hab_scaners_by_user_dependencies function
+     * - Retourne les scaners et ses dependances auxquels
+     * - le user est habilité
+     *
+     * @param : $id_user
+     * @return : row OR Exception
+     */
+    public function get_hab_scaners_by_user_dependencies($id_user){
+        try{
+            $requete = "SELECT A.`scaner_id`, A.`permission`, B.`libelle`, B.`image`, 
+                        C.`libelle_short` as 'libelle_short_service', D.`libelle_short` as 'libelle_short_etablissement'
+                        FROM $this->table_scaner_hab A
+                        LEFT JOIN $this->table_scaner B ON A.`scaner_id` = B.`id`
+                        LEFT JOIN $this->table_service C ON B.`service_id` = C.`id`
+                        LEFT JOIN $this->table_etablissement D ON C.`etablissement_id` = D.`id`
                         WHERE A.`user_id` = '$id_user'";
             $res = $this->db->query($requete);
             $row = $res->result();
@@ -226,6 +262,11 @@ class Habilitations_model extends CI_Model {
             return FALSE;
         }
     }
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------- ETABLISSEMENTS ------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
     /**
      * get_hab_etablissements_by_user function
      * - Retourne les etablissements auxquels
@@ -308,9 +349,14 @@ class Habilitations_model extends CI_Model {
             return FALSE;
         }
     }
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------ SERVICES --------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
     /**
      * get_hab_services_by_user function
-     * - Retourne les etablissements auxquels
+     * - Retourne les services auxquels
      * - le user est habilité
      *
      * @param : $id_user
@@ -321,6 +367,30 @@ class Habilitations_model extends CI_Model {
             $requete = "SELECT A.`service_id`, A.`permission`, B.`libelle`
                         FROM $this->table_service_hab A
                         LEFT JOIN $this->table_service B ON A.`service_id` = B.`id`
+                        WHERE A.`user_id` = '$id_user'";
+            $res = $this->db->query($requete);
+            $row = $res->result();
+            $resultat = $row;
+
+        }catch (PDOException $e){
+            die("Erreur : ".$e->getMessage());
+        }
+        return $resultat;
+    }
+    /**
+     * get_hab_services_by_user_dependencies function
+     * - Retourne les services et ses dependances auxquels
+     * - le user est habilité
+     *
+     * @param : $id_user
+     * @return : row OR Exception
+     */
+    public function get_hab_services_by_user_dependencies($id_user){
+        try{
+            $requete = "SELECT A.`service_id`, A.`permission`, B.`libelle`, C.`libelle_short`
+                        FROM $this->table_service_hab A
+                        LEFT JOIN $this->table_service B ON A.`service_id` = B.`id`
+                        LEFT JOIN $this->table_etablissement C ON B.`etablissement_id` = C.`id`
                         WHERE A.`user_id` = '$id_user'";
             $res = $this->db->query($requete);
             $row = $res->result();

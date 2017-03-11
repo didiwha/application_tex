@@ -32,18 +32,54 @@
 			redirect('fonctions/tracabilite_controller/load_view', 'refresh');
 		}
 		/**
-		 * index function
-		 * - Charge la vue accueil [home_view]
+		 * load_view function
+		 * - Charge la vue tracabilité [tracabilite_view]
 		 */
 		public function load_view(){
 			getSession($this);
+			$data['filtres'] = [];
+			view_loader($this, "template/fonctions/", "tracabilite_view", $data);
+		}
+
+		/**
+		 * load_data function
+		 * - Charge la vue tracabilité avec les information 
+		 *  du formulaire de recherche [tracabilite_view]
+		 */
+		public function load_data(){
+			getSession($this);
+
 			//*** LOADING MODELS ***
 			models_loader($this, array("Horodateur_model"));
-			$scaner_id = get_session_tracability_filter_scaner_id($this) ? get_session_tracability_filter_scaner_id($this) : get_session_default_scaner_id($this);
-			//** Chargement Données **
-			$data['scans'] = $this->Horodateur_model->get_scans_by_scaner($scaner_id);
-			//** TEST SUIVI NUMERO **
-			$data['suiviNumero'] = $this->Horodateur_model->get_suivi_by_numero(98989898);
+			
+			//*******************************
+			//*** RECUPERATION PARAMETRES ***
+			//*******************************
+			$filtre_type = $this->input->post('filtre-type');
+			$filtre = $this->input->post('filtre');
+			$permission = $this->input->post('permission');
+			$date_debut = $this->input->post('date-debut');
+			$date_fin = $this->input->post('date-fin');
+			//*******************************
+			//*** RECONSTRUCTION POUR VUE ***
+			//*******************************
+			$data['filtres']['filtre_type'] = $filtre_type;
+			$data['filtres']['filtre']['id'] = $filtre;
+			$data['filtres']['filtre']['permission'] = $permission;
+			$data['filtres']['date_debut'] = $date_debut;
+			$data['filtres']['date_fin'] = $date_fin;
+			
+			if ( $filtre_type == 1 ){
+				//** Récupération Données **
+				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_scaner($filtre);
+			}else if ( $filtre_type == 2){
+				//** Récupération Données **
+				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_service($filtre);
+			}else if ( $filtre_type == 3 ){
+				//** Récupération Données **
+				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_etablissement($filtre);
+			}
+
 			view_loader($this, "template/fonctions/", "tracabilite_view", $data);
 		}
 	}

@@ -20,7 +20,11 @@ class Ajax_caller_controller extends CI_Controller {
     public function getFullHabilitationScaner(){
         //$this->load->model('Etablissement_model');
         //$this->input->post('user_id');
-        echo json_encode('Scaner');
+        $this->load->model('Habilitations_model');
+        $data = $this->Habilitations_model->get_hab_scaners_by_user_dependencies($this->input->post('user_id'));
+        $arrayReturn = [];
+        $arrayReturn['data'] = $data;
+        echo json_encode($arrayReturn);
     }
     /**
      * Fonction getFullHabilitationService
@@ -30,7 +34,11 @@ class Ajax_caller_controller extends CI_Controller {
     public function getFullHabilitationService(){
         //$this->load->model('Etablissement_model');
         //$this->input->post('user_id');
-        echo json_encode('Service');
+        $this->load->model('Habilitations_model');
+        $data = $this->Habilitations_model->get_hab_services_by_user_dependencies($this->input->post('user_id'));
+        $arrayReturn = [];
+        $arrayReturn['data'] = $data;
+        echo json_encode($arrayReturn);
     }
     /**
      * Fonction getFullHabilitationEtablissement

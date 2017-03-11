@@ -27,11 +27,11 @@ class Horodateur_model extends CI_Model {
 	/**
 	 * get_scans_by_scaner function
 	 * - Retourne les 20 derniers scans effectués par un scaner donné
-	 *
-	 * @param : $id_user
+	 * __ OLD get_scans_by_scaner
+	 * @param : $id_scaner
 	 * @return : row OR Exception
 	 */
-	public function get_scans_by_scaner($id_scaner){
+	public function get_horodatages_by_scaner($id_scaner){
         try{
         	/*$requete = "SELECT A.`id`, A.`numero`, A.`date`, A.`commentaire`, B.`image`, 
                         GROUP_CONCAT(A.`commentaire` separator ';') as `Commentaires`
@@ -63,6 +63,49 @@ class Horodateur_model extends CI_Model {
         }
         return $resultat;
 	}
+    /**
+     * get_horodatages_by_service function
+     * - Retourne les horodatages en fonction d'un service
+     *
+     * @param : $id_service
+     * @return : row OR Exception
+     */
+    public function get_horodatages_by_service($id_service){
+        try{
+            $requete = "SELECT A.`id`, A.`numero`, A.`date`, A.`commentaire`, A.`scaner_id`, B.`image` 
+                        FROM $this->table_horodateur A 
+                        LEFT JOIN $this->table_scaner B on A.`scaner_id` = B.`id` 
+                        WHERE A.`scaner_id` IN (SELECT `id` FROM $this->table_scaner WHERE `service_id` = '$id_service')
+                        ORDER BY A.`date` DESC";
+            $res = $this->db->query($requete);
+            $resultat = $res->result();
+        }catch (PDOException $e){
+            die("Erreur : ".$e->getMessage());
+        }
+        return $resultat;
+    }
+    /**
+     * get_horodatages_by_etablissement function
+     * - Retourne les horodatages en fonction d'un etablissement
+     *
+     * @param : $id_etablissement
+     * @return : row OR Exception
+     */
+    public function get_horodatages_by_etablissement($id_etablissement){
+        try{
+            $requete = "SELECT A.`id`, A.`numero`, A.`date`, A.`commentaire`, A.`scaner_id`, B.`image` 
+                        FROM $this->table_horodateur A 
+                        LEFT JOIN $this->table_scaner B on A.`scaner_id` = B.`id` 
+                        WHERE A.`scaner_id` IN (SELECT `id` FROM $this->table_scaner WHERE 
+                                                `service_id` IN (SELECT `id` FROM $this->table_service WHERE `etablissement_id` = '$id_etablissement'))
+                        ORDER BY A.`date` DESC";
+            $res = $this->db->query($requete);
+            $resultat = $res->result();
+        }catch (PDOException $e){
+            die("Erreur : ".$e->getMessage());
+        }
+        return $resultat;
+    }
     /**
      * insert_scan function
      * - Ajoute un nouveau scan en base de données
