@@ -286,14 +286,14 @@ CREATE TABLE IF NOT EXISTS `fnct_horodateur` (
   `date` datetime NOT NULL,
   `commentaire` varchar(50) NOT NULL,
   `scaner_id` int(11) NOT NULL,
-  `prelevement_type_id` int(1) NOT NULL
+  `horodatage_type_id` int(1) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `fnct_horodateur`
 --
 
-INSERT INTO `fnct_horodateur` (`id`, `numero`, `date`, `commentaire`, `scaner_id`, `prelevement_type_id`) VALUES
+INSERT INTO `fnct_horodateur` (`id`, `numero`, `date`, `commentaire`, `scaner_id`, `horodatage_type_id`) VALUES
 (1, '12345678', '2016-01-01 04:10:09', 'Commentaire Test', 3, 1),
 (7, '98989898', '2016-01-16 12:06:46', '', 3, 1),
 (8, '98989898', '2016-01-16 12:17:35', 'test6565', 8, 1),

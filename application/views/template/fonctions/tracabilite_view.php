@@ -13,8 +13,8 @@
 <?php }
 	//var_dump(get_session_tracability_filter_date($this));
 	//var_dump(get_session_tracability_filter_scaner_id($this));
-	// var_dump($this->session);
-	// var_dump($array_horodatages);
+	var_dump($this->session);
+	//var_dump($array_horodatages);
 	
 
 	//****************************
@@ -26,8 +26,8 @@
 		$date_fin = $filtres["date_fin"];
 	}else{
 		$filtre_type = '';
-		$date_debut = '';
-		$date_fin = '';
+		$date_debut = '01/01/2016';
+		$date_fin = '16/01/2016';
 	}
 ?>
 <!-- VIEW CONTAINER -->
@@ -35,7 +35,7 @@
 	<!-- CONTAINER ONGLET ENTETE -->
 	<div class="onglet-container">
 		<div class="onglet-entete">
-			Tracabilité
+			Tracabilite
 		</div>
 	</div>
 	<!-- CONTAINER FORMULAIRE DE RECHERCHE -->
@@ -44,7 +44,7 @@
 		<div class="progress-container">
 			<div class="bar-container">
 				<div class="header-result">
-					65 Résultats
+					65 Resultats
 				</div>
 			</div>
 			<div class="bar-container">
@@ -52,7 +52,7 @@
 				<div class="progress-bar-container">
 					<div class="progress">
 						<div class="progress-bar">
-							<span>Terminés</span>
+							<span>Termines</span>
 						</div>
 					</div>
 				</div>
@@ -120,60 +120,59 @@
 			</div>
 		</form>
 	</div>
-	<!-- ** ZONE CONTENT BLOC LIGNE SCAN ** -->
-	<div class="container-fluid visible-xs visible-sm visible-md visible-lg">
-	    <div class="row">
-			<div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 content-rows-1">
-				<?php
-					if(!empty($array_horodatages)){
-						$compteur = 0;
-						foreach ($array_horodatages as $scan) {
-							//***** Assignation de la classe de la ligne ******
-							if($compteur%2 == 1){
-								$classe = "row-scan-1";
-							}else{
-								$classe = "row-scan-2";
-							} ?>
-							<div class="row <?=$classe;?>" numero="<?=$scan->numero;?>" id-scaner="<?=$scan->scaner_id;?>">
-								<div class="col-sm-4 col-md-4 t-left row-zone-1">
-									<div class="icone-container">
-										<img src="<?=ressources_images_scaners_route().$scan->image;?>" class="icone">
-									</div>
-									<div class="text-container">
-										<?=$scan->numero;?>
-									</div>
-								</div>
-								<div class="col-sm-2 col-md-2 row-zone-2">
-									<?=get_date_from_datetime($scan->date);?>
-								</div>
-								<div class="col-sm-2 col-md-2 row-zone-3">
-									<?=get_heure_from_datetime($scan->date);?>
-								</div>
-								<!--<div class="col-sm-2 col-md-2 t-left row-zone-4">
-									<?=$scan->commentaire;?>
-								</div>-->
-								<div class="col-sm-4 col-md-4 row-zone-5">
-		                        	<input type="image" src="<?=assets_images_icones_route().'icone_modification.png'?>" data-dialog="dialog" id-scan="<?=$scan->id;?>" commentaire="<?=$scan->commentaire;?>" class="icone" alt="Submit"/>
-									<!--<form action="horodateur_controller/delete_entry" method="post">-->
+	<!-- CONTAINER HORODATAGES -->
+	<div class="horodatages-container">
+		<!-- ** ZONE CONTENT BLOC LIGNE SCAN ** -->
+		<?php
+			if(!empty($array_horodatages)){
+				$compteur = 0;
+				foreach ($array_horodatages as $scan) {
+					//***** Assignation de la classe de la ligne ******
+					if($compteur%2 == 1){
+						$classe = "row-horodatage-1";
+					}else{
+						$classe = "row-horodatage-2";
+					} ?>
+					<div class="horodatage-row <?=$classe;?>" numero="<?=$scan->numero;?>" id-scaner="<?=$scan->scaner_id;?>">
+						<div class="icone-container">
+							<img src="<?=ressources_images_scaners_route().$scan->image;?>" class="icone">
+						</div>
+						<div class="text-container">
+							<?=$scan->numero;?>
+						</div>
+						<div class="date-container">
+							<?=get_date_from_datetime($scan->date);?>
+						</div>
+						<div class="heure-container">
+							<?=get_heure_from_datetime($scan->date);?>
+						</div>
+						<div class="endline-container">
+							<div class="img-container">
+								<input type="image" src="<?=assets_images_icones_route().'icone_modification.png'?>" data-dialog="dialog" id-scan="<?=$scan->id;?>" commentaire="<?=$scan->commentaire;?>" class="icone" alt="Submit"/>
+							</div>
+							<?php if (1 == 1):?>
+	                        	<div class="img-container">
 									<form action="<?=base_url();?>index.php/fonctions/horodateur_controller/delete_entry" method="post">
-		                                <input type="hidden" name="id_scan" value="<?=$scan->id;?>">
+		                                <input type="hidden" name="id_horodatage" value="<?=$scan->id;?>">
+		                                <input type="hidden" name="numero_demande" value="<?=$scan->numero;?>">
+		                                <input type="hidden" name="id_scaner" value="<?=$scan->scaner_id;?>">
 		                            	<input type="image" src="<?=assets_images_icones_route().'icone_suppression.png'?>" class="icone" alt="Submit" onclick="return confirm('Confirmer la suppression ?')"/>
 		                            </form>
-								</div>
-							</div>
-						<?php 
-							$compteur++;
-						} 
-					}elseif (empty(get_session_default_scaner_id($this))){ ?>
-						<div class="row row-no-answers-1">
-							Aucun Scaner par défaut ne vous attribué, vous ne pouvez pas utiliser cette fonction, contacter un administrateur
+	                            </div>
+                        	<?php endif;?>
 						</div>
-				<?php }else{ ?>
-						<div class="row row-no-answers-1">
-							Aucune donnée n'a pu être récupérée
-						</div>
-				<?php } ?>
-			</div>
-	    </div>
+					</div>
+				<?php 
+					$compteur++;
+				} 
+			}elseif (empty(get_session_default_scaner_id($this))){ ?>
+				<div class="row row-no-answers-1">
+					Aucun Scaner par défaut ne vous attribué, vous ne pouvez pas utiliser cette fonction, contacter un administrateur
+				</div>
+		<?php }else{ ?>
+				<div class="row row-no-answers-1">
+					Aucune donnée n'a pu être récupérée
+				</div>
+		<?php } ?>
 	</div>
 </div>

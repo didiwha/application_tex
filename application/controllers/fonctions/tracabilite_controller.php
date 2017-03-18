@@ -60,6 +60,13 @@
 			$permission = $this->input->post('permission');
 			$date_debut = $this->input->post('date-debut');
 			$date_fin = $this->input->post('date-fin');
+
+			//*******************************
+			//***** FORMATAGE DATE **********
+			//*******************************
+			$date_debut_mysql = formate_date_to_datetimeMySQL($date_debut, 1);
+			$date_fin_mysql = formate_date_to_datetimeMySQL($date_fin, 2);
+
 			//*******************************
 			//*** RECONSTRUCTION POUR VUE ***
 			//*******************************
@@ -69,15 +76,17 @@
 			$data['filtres']['date_debut'] = $date_debut;
 			$data['filtres']['date_fin'] = $date_fin;
 			
+			//**** RECHERCHE PAR SCANER ****
 			if ( $filtre_type == 1 ){
-				//** Récupération Données **
-				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_scaner($filtre);
-			}else if ( $filtre_type == 2){
-				//** Récupération Données **
-				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_service($filtre);
-			}else if ( $filtre_type == 3 ){
-				//** Récupération Données **
-				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_etablissement($filtre);
+				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_scaner($filtre, $date_debut_mysql, $date_fin_mysql);
+			}
+			//**** RECHERCHE PAR SERVICE ****
+			else if ( $filtre_type == 2){
+				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_service($filtre, $date_debut_mysql, $date_fin_mysql);
+			}
+			//**** RECHERCHE PAR ETABLISSEMENT ****
+			else if ( $filtre_type == 3 ){
+				$data['array_horodatages'] = $this->Horodateur_model->get_horodatages_by_etablissement($filtre, $date_debut_mysql, $date_fin_mysql);
 			}
 
 			view_loader($this, "template/fonctions/", "tracabilite_view", $data);

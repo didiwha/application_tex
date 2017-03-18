@@ -41,7 +41,7 @@
 			<?php echo form_open('fonctions/horodateur_controller/insert_entry');?>
 			<form action="horodateur_controller/insert_entry" method="post" name="formpost">
 				<input type="hidden" name="scaner_id" value="<?=get_session_default_scaner_id($this);?>"/>
-				<input type="hidden" name="prelevement_type_id" value="<?=get_session_horodateur_filter_horodatage_type($this);?>">
+				<input type="hidden" name="horodatage_type_id" value="<?=get_session_horodateur_filter_horodatage_type($this);?>">
 				<div class="row row-full">
 					<!-- ** ZONE IMAGE BLANCHE RAPPEL ** -->
 					<div class="col-sm-3 col-md-3 bloc-image-entete-1">
@@ -113,7 +113,9 @@
 	                        	<input type="image" src="<?=assets_images_icones_route().'icone_modification.png'?>" data-dialog="dialog" id-scan="<?=$scan->id;?>" commentaire="<?=$scan->commentaires;?>" class="icone" alt="Submit"/>
 								<!--<form action="horodateur_controller/delete_entry" method="post">-->
 								<form action="<?=base_url();?>index.php/fonctions/horodateur_controller/delete_entry" method="post">
-	                                <input type="hidden" name="id_scan" value="<?=$scan->id;?>">
+	                                <input type="hidden" name="id_horodatage" value="<?=$scan->id;?>">
+	                                <input type="hidden" name="numero_demande" value="<?=$scan->numero;?>">
+		                            <input type="hidden" name="id_scaner" value="<?=$scan->scaner_id;?>">
 	                            	<input type="image" src="<?=assets_images_icones_route().'icone_suppression.png'?>" class="icone" alt="Submit" onclick="return confirm('Confirmer la suppression ?')"/>
 	                            </form>
 							</div>
@@ -165,7 +167,7 @@
 			<?php echo form_open('fonctions/horodateur_controller/insert_entry');?>
 			<form action="horodateur_controller/insert_entry" method="post" name="formpost">
 				<input type="hidden" name="scaner_id" value="<?=get_session_default_scaner_id($this);?>"/>
-				<input type="hidden" name="prelevement_type_id" value="<?=get_session_horodateur_filter_horodatage_type($this);?>">
+				<input type="hidden" name="horodatage_type_id" value="<?=get_session_horodateur_filter_horodatage_type($this);?>">
 				<div class="row row-full">
 					<!-- ** ZONE CHAMP COMMENTAIRE ** 
 					<div class="col-xs-5 bloc-commentaire">

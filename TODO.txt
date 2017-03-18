@@ -5,8 +5,5 @@
 - ** helpers/security_application_helper
 Gestion encryption bcrypt
 
--** view/template/fonctions/tracabilite_view
-Gestion de la recherche
-Ajouter les dates de debut et fin
-
--** Another thing todo
+-** Ajouter la gestion des commentaires globale
+Supprimer les commentaires d'un horodatage avant sa suppression

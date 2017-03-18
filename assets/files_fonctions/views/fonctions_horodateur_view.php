@@ -6,7 +6,7 @@
 		//*** GESTION DES COULEURS POUR DIFFERENCIER LES TYPES D'HORODATAGE ***
 		//*********************************************************************
 		//*** Récupération Type Horodatage en Session ***
-		var type_horodatage = $("input[name=prelevement_type_id]").val();
+		var type_horodatage = $("input[name=horodatage_type_id]").val();
 		//*** Cas d'Horodatage de Demande ***
 		if(type_horodatage == 1){
 			$("input[name=numero]").attr("placeholder", "Numero Demande");

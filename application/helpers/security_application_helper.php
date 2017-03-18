@@ -1,5 +1,13 @@
 <?php
 	//*************************************************************
+	/***** get_int_limit_horodateur_fonction Function *************
+	** - Retourne le nombre limite d'horodatages 
+	** - pour la vue horodateur
+	**************************************************************/
+	function get_int_limit_horodateur_fonction(){
+		return 20;
+	}
+	//*************************************************************
 	/********** get_delay_update_password Function ****************
 	** - Retourne le delai en JOURS pour la procédure
 	** - de changement automatique de mot de passe

@@ -38,7 +38,7 @@
 			models_loader($this, array("Horodateur_model", "Default_data_model"));
 			//** Chargement Données **
 			if(!empty(get_session_default_scaner_id($this))){
-				$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner(get_session_default_scaner_id($this));
+				$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner_limited(get_session_default_scaner_id($this), get_int_limit_horodateur_fonction());
 				$data['default_commentaires'] = $this->Default_data_model->get_default_comments_by_scaner(get_session_default_scaner_id($this));
 				$data['horodatage_types'] = $this->data_location->get_horodatage_types();
 			}
@@ -49,7 +49,7 @@
 		/**
 		 * insert_entry function
 		 * - Vérifie la conformité des informations saisies
-		 * - Appel la methode insert_scan du modele horodateur si passage de la validation
+		 * - Appel la methode insert_entry du modele horodateur si passage de la validation
 		 * - Charge la vue des scans [horodateur_view] avec le resultat de l'operation
 		 */
 		public function insert_entry(){
@@ -57,7 +57,7 @@
 			//*** LOADING MODELS ***
 			models_loader($this, array("Horodateur_model"));
 			//** Chargement Données **
-			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner(get_session_default_scaner_id($this));
+			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner_limited(get_session_default_scaner_id($this), get_int_limit_horodateur_fonction());
 			//*** LOADING VALIDATION RULES ***
 			load_form_insert_scan_rules($this);
 			if ($this->form_validation->run() == FALSE){
@@ -65,10 +65,10 @@
                 view_loader($this, "template/fonctions/", "horodateur_view", $data);
             }else{
                 //** Appel Méthode d'Insertion **
-				if($this->Horodateur_model->insert_scan()){
-					$this->session->set_flashdata('info', "Scan enregistré");
+				if($this->Horodateur_model->insert_entry()){
+					$this->session->set_flashdata('info', "Horodatage enregistré");
 				}else{
-					$this->session->set_flashdata('error', "Erreur lors de l'enregistrement du scan");
+					$this->session->set_flashdata('error', "Erreur lors de l'enregistrement de l/'horodatage");
 				}
 				redirect('fonctions/horodateur_controller', 'refresh');
             }
@@ -76,7 +76,7 @@
 		/**
 		 * update_commentaire function
 		 * - Vérifie la conformité des informations saisies
-		 * - Appel la methode update_commentaire du modele horodateur
+		 * - Appel la methode update_entry du modele horodateur
 		 * - Charge la vue des scans [horodateur_view] avec le resultat de l'operation
 		 */
 		public function update_commentaire(){
@@ -84,9 +84,9 @@
 			//*** LOADING MODELS ***
 			models_loader($this, array("Horodateur_model"));
 			//** Chargement Données **
-			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner(get_session_default_scaner_id($this));
+			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner_limited(get_session_default_scaner_id($this), get_int_limit_horodateur_fonction());
 			//** Appel Méthode de Suppression **
-			if($this->Horodateur_model->update_commentaire()){
+			if($this->Horodateur_model->update_entry()){
 				$this->session->set_flashdata('info', "Commentaire modifié avec succès !");
 			}else{
 				$this->session->set_flashdata('error', "Erreur lors de la modification du commentaire");
@@ -100,15 +100,23 @@
 		 */
 		public function delete_entry(){
 			getSession($this);
+
+			//*** RECUPERATION PARAMETRES ***
+			$id_horodatage = $this->input->post('id_horodatage');
+			$numero_demande = $this->input->post('numero_demande');
+			$id_scaner = $this->input->post('id_scaner');
+
 			//*** LOADING MODELS ***
 			models_loader($this, array("Horodateur_model"));
-			//** Chargement Données **
-			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner(get_session_default_scaner_id($this));
-			//** Appel Méthode de Suppression **
-			if($this->Horodateur_model->delete_scan()){
-				$this->session->set_flashdata('info', "Scan supprimé avec succès");
+
+			//** CHARGEMENT DONNEES **
+			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner_limited(get_session_default_scaner_id($this), get_int_limit_horodateur_fonction());
+
+			//** APPEL METHODE SUPPRESSION HORODATAGE **
+			if($this->Horodateur_model->delete_entry($id_horodatage)){
+				$this->session->set_flashdata('info', "Horodatage supprimé avec succès");
 			}else{
-				$this->session->set_flashdata('error', "Erreur lors de la suppression du scan");
+				$this->session->set_flashdata('error', "Erreur lors de la suppression de l'/horodatage");
 			}
 			redirect('fonctions/horodateur_controller', 'refresh');
 		}
@@ -129,7 +137,7 @@
 				$this->session->set_flashdata('error', "Erreur lors de la modification du du scaner par défaut de la session courante: ".$e->getMessage());
 			}
 			//** Chargement Données **
-			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner(get_session_default_scaner_id($this));
+			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner_limited(get_session_default_scaner_id($this), get_int_limit_horodateur_fonction());
 			redirect('fonctions/horodateur_controller', 'refresh');
 		}
 		/**
@@ -142,7 +150,7 @@
 			//*** LOADING MODELS ***
 			models_loader($this, array("Horodateur_model", "Default_data_model"));
 			//** Chargement Données **
-			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner(get_session_default_scaner_id($this));
+			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner_limited(get_session_default_scaner_id($this), get_int_limit_horodateur_fonction());
 			//** Appel Méthode de Suppression **
 			if($this->Default_data_model->insert_default_comment_by_scaner($this->input->post("scaner_id"), $this->input->post("commentaire"))){
 				$this->session->set_flashdata('info', "Commentaire par défaut ajouté avec succès");
@@ -161,7 +169,7 @@
 			//*** LOADING MODELS ***
 			models_loader($this, array("Horodateur_model", "Default_data_model"));
 			//** Chargement Données **
-			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner(get_session_default_scaner_id($this));
+			$data['scans'] = $this->Horodateur_model->get_horodatages_by_scaner_limited(get_session_default_scaner_id($this), get_int_limit_horodateur_fonction());
 			//** Appel Méthode de Suppression **
 			if($this->Default_data_model->delete_default_comment_by_scaner($this->input->post("commentaire_id"))){
 				$this->session->set_flashdata('info', "Commentaire par défaut supprimé avec succès");
