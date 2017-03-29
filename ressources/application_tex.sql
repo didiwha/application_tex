@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Sam 11 Mars 2017 à 18:29
+-- Généré le :  Mer 29 Mars 2017 à 18:28
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -28,7 +28,7 @@ USE `application_tex`;
 -- Structure de la table `adm_default_data`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_default_data` (
+CREATE TABLE `adm_default_data` (
   `id` int(11) NOT NULL,
   `data_value` varchar(30) NOT NULL,
   `data_reference` varchar(10) DEFAULT NULL,
@@ -52,7 +52,7 @@ INSERT INTO `adm_default_data` (`id`, `data_value`, `data_reference`, `data_type
 -- Structure de la table `adm_ent_etablissement`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_ent_etablissement` (
+CREATE TABLE `adm_ent_etablissement` (
   `id` int(11) NOT NULL,
   `libelle` varchar(40) NOT NULL,
   `libelle_short` varchar(4) NOT NULL,
@@ -83,7 +83,7 @@ INSERT INTO `adm_ent_etablissement` (`id`, `libelle`, `libelle_short`, `code`, `
 -- Structure de la table `adm_ent_fonction`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_ent_fonction` (
+CREATE TABLE `adm_ent_fonction` (
   `id` int(11) NOT NULL,
   `libelle` varchar(30) NOT NULL,
   `libelle_short` varchar(15) NOT NULL,
@@ -107,7 +107,7 @@ INSERT INTO `adm_ent_fonction` (`id`, `libelle`, `libelle_short`, `statut`, `ima
 -- Structure de la table `adm_ent_scaner`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_ent_scaner` (
+CREATE TABLE `adm_ent_scaner` (
   `id` int(11) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `libelle_short` varchar(4) NOT NULL,
@@ -131,7 +131,7 @@ INSERT INTO `adm_ent_scaner` (`id`, `libelle`, `libelle_short`, `image`, `servic
 -- Structure de la table `adm_ent_service`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_ent_service` (
+CREATE TABLE `adm_ent_service` (
   `id` int(11) NOT NULL,
   `libelle` varchar(200) NOT NULL,
   `libelle_short` varchar(4) NOT NULL,
@@ -157,7 +157,7 @@ INSERT INTO `adm_ent_service` (`id`, `libelle`, `libelle_short`, `statut_id`, `s
 -- Structure de la table `adm_ent_user`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_ent_user` (
+CREATE TABLE `adm_ent_user` (
   `id` int(11) NOT NULL,
   `poste` varchar(10) NOT NULL,
   `password` varchar(50) NOT NULL,
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `adm_ent_user` (
 --
 
 INSERT INTO `adm_ent_user` (`id`, `poste`, `password`, `statut_id`, `image`, `avatar`, `service_id`, `etablissement_id`, `nom`, `prenom`, `fonction`, `email`, `date_last_connection`, `date_last_update_password`, `type_compte_id`) VALUES
-(2, 'admin', '$2y$10$lk2CG/EfZ1Zd7XW.9NifGOVBbh.P8HeghAgoJpkFLGu', '1', 'empty_image.png', 'empty_avatar.jpg', 1, 1, NULL, NULL, NULL, 'admin@email.com', '2017-03-05 14:15:26', NULL, 1),
+(2, 'admin', '$2y$10$lk2CG/EfZ1Zd7XW.9NifGOVBbh.P8HeghAgoJpkFLGu', '1', 'empty_image.png', 'empty_avatar.jpg', 1, 1, NULL, NULL, NULL, 'admin@email.com', '2017-03-18 13:50:56', NULL, 1),
 (3, 'TEST', '$2y$05$x5p8cJRT5ekfXl6L4vbf1uBnwIHqaLaF0wQqa0aARiS', '5', 'empty_image.png', 'empty_avatar.jpg', 1, 1, NULL, NULL, NULL, 'test@email.com', '2016-03-06 20:36:57', NULL, 1),
 (4, 'test', '$2y$05$iHnmP6bHOy8xqCpQoPedvO0i5ORlI61t/7M6TGHc9bo', '4', 'empty_image.png', 'empty_avatar.jpg', 3, 2, NULL, NULL, NULL, 'email@coucou.com', NULL, NULL, 1);
 
@@ -190,7 +190,7 @@ INSERT INTO `adm_ent_user` (`id`, `poste`, `password`, `statut_id`, `image`, `av
 -- Structure de la table `adm_hab_etablissement`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_hab_etablissement` (
+CREATE TABLE `adm_hab_etablissement` (
   `user_id` int(11) NOT NULL,
   `etablissement_id` int(11) NOT NULL,
   `permission` int(11) NOT NULL
@@ -211,7 +211,7 @@ INSERT INTO `adm_hab_etablissement` (`user_id`, `etablissement_id`, `permission`
 -- Structure de la table `adm_hab_fonction`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_hab_fonction` (
+CREATE TABLE `adm_hab_fonction` (
   `user_id` int(11) NOT NULL,
   `fonction_id` int(11) NOT NULL,
   `permission` int(11) NOT NULL
@@ -234,7 +234,7 @@ INSERT INTO `adm_hab_fonction` (`user_id`, `fonction_id`, `permission`) VALUES
 -- Structure de la table `adm_hab_scaner`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_hab_scaner` (
+CREATE TABLE `adm_hab_scaner` (
   `user_id` int(11) NOT NULL,
   `scaner_id` int(11) NOT NULL,
   `permission` int(11) NOT NULL
@@ -258,7 +258,7 @@ INSERT INTO `adm_hab_scaner` (`user_id`, `scaner_id`, `permission`) VALUES
 -- Structure de la table `adm_hab_service`
 --
 
-CREATE TABLE IF NOT EXISTS `adm_hab_service` (
+CREATE TABLE `adm_hab_service` (
   `user_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
   `permission` int(11) NOT NULL
@@ -280,7 +280,7 @@ INSERT INTO `adm_hab_service` (`user_id`, `service_id`, `permission`) VALUES
 -- Structure de la table `fnct_horodateur`
 --
 
-CREATE TABLE IF NOT EXISTS `fnct_horodateur` (
+CREATE TABLE `fnct_horodateur` (
   `id` int(11) NOT NULL,
   `numero` varchar(12) NOT NULL,
   `date` datetime NOT NULL,
@@ -305,7 +305,7 @@ INSERT INTO `fnct_horodateur` (`id`, `numero`, `date`, `commentaire`, `scaner_id
 -- Structure de la table `fnct_horodateur_commentaire`
 --
 
-CREATE TABLE IF NOT EXISTS `fnct_horodateur_commentaire` (
+CREATE TABLE `fnct_horodateur_commentaire` (
   `com_id` int(11) NOT NULL,
   `com_numero_demande` varchar(10) NOT NULL,
   `com_id_scaner` varchar(3) NOT NULL,
