@@ -49,7 +49,7 @@ class Habilitations_model extends CI_Model {
         				LEFT JOIN $this->table_fonction B ON A.`fonction_id` = B.`id`
         				WHERE A.`user_id` = $id_user
         				AND B.`statut` = '1'
-        				ORDER BY B.`ordre";
+        				ORDER BY B.`ordre`";
             $res = $this->db->query($requete);
             $row = $res->result();
             $resultat = $row;
