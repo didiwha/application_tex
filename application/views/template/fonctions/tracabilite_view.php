@@ -13,7 +13,7 @@
 <?php }
 	//var_dump(get_session_tracability_filter_date($this));
 	//var_dump(get_session_tracability_filter_scaner_id($this));
-	var_dump($this->session);
+	// var_dump($this->session);
 	//var_dump($array_horodatages);
 	
 

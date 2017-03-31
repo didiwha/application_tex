@@ -8,7 +8,6 @@
 		<!-- ****** CHARGEMENT FICHIER ASSOCIES A LA VUE ***** -->
 		<!-- ************************************************* -->
 		<?php if(isset($files)):?>
-			<?php //var_dump($files);?>
 			<?php foreach ($files as $key => $file):?>
 				<?php switch ($file[0]) {
 					case 'php':

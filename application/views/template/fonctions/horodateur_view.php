@@ -11,7 +11,11 @@
 		</div>
 	</div>
 <?php endif; ?>
-<?php //var_dump($scans); ?>
+<?php 
+	//var_dump($scans); 
+	// var_dump(get_session_horodateur_filter_horodatage_type($this));
+	// var_dump($horodatage_types);
+?>
 <!-- ** ZONE ENTETE ONGLET/RECHERCHE PAR NUMERO ET FORMULAIRE RECHERCHE DATE/SCANER ** -->
 <div class="container-fluid container-first visible-xs visible-sm visible-md visible-lg">
     <div class="row">
