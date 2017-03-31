@@ -2,6 +2,8 @@
 //*************** TODO *******************
 //****************************************
 
+//--- Branch: Master ---
+
 - ** helpers/security_application_helper
 Gestion encryption bcrypt
 
