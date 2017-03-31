@@ -78,6 +78,7 @@
 	* @param: $data
 	**************************************************************/
 	function view_loader($controller, $path, $view, $data){
+		$data["application_version"] = get_application_version();
 		$controller->load->view("layouts/header_layout");
 		$controller->load->view("layouts/menu_layout");
 		$controller->load->view($path . $view, $data);
