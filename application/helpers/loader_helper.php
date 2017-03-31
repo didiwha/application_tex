@@ -51,7 +51,7 @@
 	**************************************************************/
 	function admin_view_loader($controller, $view, $data){
 		//*** CHARGEMENT VERSION PPLICATION ***
-		$data["application_version"] = $controller->data_location->get_application_version();
+		$data["application_version"] = $controller->application_version->get_application_version();
 		$controller->load->view("layouts/header_layout");
 		$controller->load->view("layouts/menu_layout");
 		$controller->load->view("layouts/admin_onglets_layout");
@@ -67,7 +67,7 @@
 	**************************************************************/
 	function view_portail_loader($controller, $path, $view, $data){
 		//*** CHARGEMENT VERSION PPLICATION ***
-		$data["application_version"] = $controller->data_location->get_application_version();
+		$data["application_version"] = $controller->application_version->get_application_version();
 		$controller->load->view("layouts/header_layout");
 		$controller->load->view("layouts/flashdata_layout");
 		$controller->load->view($path . $view, $data);
@@ -83,7 +83,7 @@
 	**************************************************************/
 	function view_loader($controller, $path, $view, $data){
 		//*** CHARGEMENT VERSION PPLICATION ***
-		$data["application_version"] = $controller->data_location->get_application_version();
+		$data["application_version"] = $controller->application_version->get_application_version();
 		$controller->load->view("layouts/header_layout");
 		$controller->load->view("layouts/menu_layout");
 		$controller->load->view($path . $view, $data);
