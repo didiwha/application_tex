@@ -8,7 +8,7 @@ class Application_version {
     //**************************************************
     public function get_application_version(){
         $arrayVersion  = array(   
-                                'type' => 'developpement', 'version' => '1.0'
+                                'type' => 'production', 'version' => '1.0'
                               );
         return $arrayVersion;
     }
