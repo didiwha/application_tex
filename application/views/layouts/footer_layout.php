@@ -1,7 +1,7 @@
 		</div>
 		<div class="footer-container">
 			<div class="footer-bloc">
-				______FOOTER______
+				______FOOTER______ </br>Version <?php echo $application_version["version"] . ' - ' . $application_version["type"]; ?>
 			</div>
 		</div>
 		<!-- ************************************************* -->

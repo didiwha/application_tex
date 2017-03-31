@@ -1,4 +1,7 @@
 <?php
+	function get_application_version(){
+		return 'coucou';
+	}
 	/* -------------------------------------
 	* ---------- PATH FONCTIONS ------------
 	* ------------------------------------*/
