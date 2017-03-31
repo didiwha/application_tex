@@ -2,8 +2,6 @@
 //*************** TODO *******************
 //****************************************
 
-// --- Branch : profront10-prod ---
-
 - ** helpers/security_application_helper
 Gestion encryption bcrypt
 
