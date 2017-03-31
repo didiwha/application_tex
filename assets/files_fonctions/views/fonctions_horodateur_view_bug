@@ -157,6 +157,7 @@
 	});
 	//***************************************************************
 	//*** BOOTBOX Modification du Type d'horodatage de la session ***
+	//******* __BUG__ sur le if() ***********************************
 	//***************************************************************
 	$("button[bt-change-type-scan]").click(function() {
 		bootbox.dialog({
@@ -170,7 +171,11 @@
 					                    	'<select name="horodatage_type" class="form-control" required>' +
 					                    		<?php if(!empty($horodatage_types)): ?>
 						                    		<?php foreach ($horodatage_types as $horodatage_type): ?>
-															'<option value="<?=$horodatage_type["id"];?>" selected><?=$horodatage_type["value"];?></option>' +
+															<?php if($horodatage_type["id"] == get_session_horodateur_filter_horodatage_type($this)): ?>
+																'<option value="<?=$horodatage_type["id"];?>" selected><?=$horodatage_type["value"];?></option>' +
+															<? else: ?>
+																'<option value="<?=$horodatage_type["id"];?>"><?=$horodatage_type["value"];?></option>' +
+															<?endif; ?>
 													<?php endforeach; ?>
 												<?php endif; ?>
 					                    	'</select>' +
@@ -194,7 +199,4 @@
             }
         );
 	});
-	//*******************************************************************************
-	//*** __OLD__BUG if() BOOTBOX Modification du Type d'horodatage de la session ***
-	//*******************************************************************************
 </script>

@@ -16,7 +16,7 @@ class Data_location {
     public function get_horodatage_types(){
     	$arrayTypes  = array(
     							1 => array('id' => 1, 'value' => 'Demande', 'parametre' => 'default'),
-    							2 => array('id' => 2, 'value' => 'Prélèvement', 'parametre' => '')
+    							2 => array('id' => 2, 'value' => 'Prelevement', 'parametre' => '')
 							);
     	return $arrayTypes;
     }
