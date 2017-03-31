@@ -9,16 +9,6 @@ class Data_location {
 	//-------------- Il est possible de completer les tableaux ---------------
 	//---------------- mais sans modifier les index existants ----------------
 	//------------------------------------------------------------------------
-    //**************************************************
-    //************ get_application_version *************
-    //*** Retourne le tableau du type et version appli *
-    //**************************************************
-    public function get_application_version(){
-        $arrayVersion  = array(   
-                                'type' => 'developpement', 'version' => '1.0'
-                              );
-        return $arrayVersion;
-    }
 	//**************************************************
 	//************ get_horodatage_types ****************
 	//*** Retourne le tableau des types d'horodatage ***
