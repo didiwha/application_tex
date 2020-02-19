@@ -28,6 +28,43 @@
 		}
 	});
 
+	//***********************************
+	//***** CLICK NON CONFORMITES *******
+	//***********************************
+	$('div[class=img-compteur-container]').click(function(){
+		//*** RECUPERATION TABLEAU DEMANDES ***
+		var array_demandes = [];
+		$('div[class=horodatages-container] > div').each(function(element){
+			var numero = $(this)[0].attributes['numero'].nodeValue;
+			if($.inArray(numero, array_demandes)){
+				array_demandes.push(numero);
+			}
+		});
+		//*** APPEL AJAX ***
+		$.ajax({
+			url: '<?=base_url();?>index.php/ajax_caller_controller/getNCStatutByListeDemandes',
+			type: 'POST',
+			datatype: 'json',
+			data: { array_demandes: array_demandes },
+			success:function(response){
+				var obj_response = JSON.parse(response)["data"];
+				if(obj_response["response_errors"] != ""){
+					alert(obj_response["response_errors"]);
+				}else{
+					console.log(obj_response);
+					//var nb_nc = obj_response["response_data"].filter(i => i === 1).length;
+					//$('div[class=result-container]').text(nb_nc);
+				}
+			},
+			error: function(error){
+				alert('Erreur: ' + error);
+			},
+			beforeSend: function(){
+				$('div[class=result-container]').empty();
+			}
+		});
+	});
+
 	//*************************************************************************
 	//** FOCNTION DE RECUPERATION DE DONNEES EN FONCTION D'UN FILTRE TYPE *****
 	//*************************************************************************

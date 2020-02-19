@@ -112,7 +112,7 @@
 					<img src="<?=assets_images_icones_route().'icone_compteur.png'?>" alt="Changement Scaner"/>
 				</div>
 				<div class="content-container">
-					<input type="checkbox" name="non-conformite"> NC
+					NC
 				</div>
 			</div>
 			<div class="validation-container">
@@ -167,7 +167,7 @@
 				} 
 			}elseif (empty(get_session_default_scaner_id($this))){ ?>
 				<div class="row row-no-answers-1">
-					Aucun Scaner par défaut ne vous attribué, vous ne pouvez pas utiliser cette fonction, contacter un administrateur
+					Aucun Scaner par défaut ne vous est attribué, vous ne pouvez pas utiliser cette fonction, contacter un administrateur
 				</div>
 		<?php }else{ ?>
 				<div class="row row-no-answers-1">

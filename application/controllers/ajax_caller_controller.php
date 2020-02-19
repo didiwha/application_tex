@@ -51,5 +51,16 @@ class Ajax_caller_controller extends CI_Controller {
         $arrayReturn = [];
         $arrayReturn['data'] = $data;
         echo json_encode($arrayReturn);
-    }    
+    }  
+    /**
+     * Fonction getNCStatutByListeDemandes
+     * Retournant une liste de demande avec statut NC ou non
+     */
+    public function getNCStatutByListeDemandes(){
+        $this->load->model('Sil_interface_model');
+        $data = $this->Sil_interface_model->get_nc_statut_by_liste_demandes($this->input->post('array_demandes'));
+        $arrayReturn = [];
+        $arrayReturn['data'] = $data;
+        echo json_encode($arrayReturn);
+    }  
 }

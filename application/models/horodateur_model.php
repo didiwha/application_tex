@@ -38,6 +38,7 @@ class Horodateur_model extends CI_Model {
                         'numero' => $this->input->post('numero'),
                         'date' => Date("Y-m-d H:i:s"),
                         'commentaire' => $this->input->post('commentaire'),
+                        'user_id' => $this->input->post('user_id'),
                         'scaner_id' => $this->input->post('scaner_id'),
                         'horodatage_type_id' => $this->input->post('horodatage_type_id')
                     );

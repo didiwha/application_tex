@@ -192,6 +192,7 @@
 					  `numero` varchar(12) NOT NULL,
 					  `date` datetime NOT NULL,
 					  `commentaire` varchar(50) NOT NULL,
+					  `user_id` int(11) NOT NULL,
 					  `scaner_id` int(11) NOT NULL,
 					  `horodatage_type_id` int(1) NOT NULL
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8";

@@ -522,15 +522,17 @@ form input{
 		}
 	}
 
-	.row-no-answers-1{
-		width: 100%;
-		height: 55px;
-		margin: 0px;
-		color: grey;
-		font-size: 16px;
-		padding: 10px;
-		background: #EDF7FF;
-	}
+
+}
+
+.row-no-answers-1{
+	width: 100%;
+	height: 80px;
+	padding: 30px;
+	margin: 0px;
+	color: grey;
+	font-size: 16px;
+	background: #EDF7FF;
 }
 
 /***********************************************
@@ -1002,7 +1004,7 @@ form input{
 
 			.result-container{
 				height: ($entete-height*(1.5/5));
-				padding-top: 5px;
+				padding-top: 7px;
 				color: #FFF;
 			}
 			.img-compteur-container{
@@ -1011,6 +1013,7 @@ form input{
 				img{
 					height: ($entete-height*(2/5));
 					width: ($entete-height*(2/5));
+					cursor: pointer;
 				}
 			}
 			.content-container{

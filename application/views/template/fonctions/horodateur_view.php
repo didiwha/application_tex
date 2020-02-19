@@ -12,7 +12,7 @@
 	</div>
 <?php endif; ?>
 <?php 
-	//var_dump($scans); 
+	// var_dump($_SESSION); 
 	// var_dump(get_session_horodateur_filter_horodatage_type($this));
 	// var_dump($horodatage_types);
 ?>
@@ -44,6 +44,7 @@
     	<div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 content-entete-1">
 			<?php echo form_open('fonctions/horodateur_controller/insert_entry');?>
 			<form action="horodateur_controller/insert_entry" method="post" name="formpost">
+				<input type="hidden" name="user_id" value="<?=get_session_user_id($this);?>"/>
 				<input type="hidden" name="scaner_id" value="<?=get_session_default_scaner_id($this);?>"/>
 				<input type="hidden" name="horodatage_type_id" value="<?=get_session_horodateur_filter_horodatage_type($this);?>">
 				<div class="row row-full">
